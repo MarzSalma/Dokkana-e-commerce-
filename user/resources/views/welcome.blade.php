@@ -2,32 +2,8 @@
 <html lang="en">
   <head>
     <title>MarketPlace</title>
-    @if (Route::has('login'))
-  <nav class="flex justify-end items-center space-x-4">
-    @auth
-      <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
-      </a>
-      <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
-          Log Out
-        </button>
-      </form>
-    @else
-      <div class="flex space-x-2">
-        <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
-          Log in
-        </a>
+    
 
-        @if (Route::has('register'))
-          <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
-            Register
-          </a>
-        @endif
-      </div>
-    @endauth
-  </nav>
-@endif
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +24,51 @@
 
   </head>
   <body>
+  @if (Route::has('login'))
+    <nav class="d-flex justify-content-end">
+      <div >
+        @auth
+            <a href="{{ url('/dashboard') }}" 
+               class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition 
+                      hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] 
+                      dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white 
+                      bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                Dashboard
+            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" 
+                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition 
+                               hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] 
+                               dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white 
+                               bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                    Log Out
+                </button>
+            </form>
+        @else
+            <div class="flex flex-col items-end space-y-2">
+                <a href="{{ route('login') }}" 
+                   class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition 
+                          hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] 
+                          dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white 
+                          bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                    Log In
+                </a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" 
+                       class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition 
+                              hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] 
+                              dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white 
+                              bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                        Register
+                    </a>
+                @endif
+            </div>
+        @endauth
+        </div>
+    </nav>
+@endif
+
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <defs>
